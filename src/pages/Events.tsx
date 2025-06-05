@@ -3,6 +3,7 @@ import { AdminLayout } from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { EventTimeline } from "@/components/EventTimeline";
 import { Search, Plus, Filter, Edit, Trash2, MapPin, Calendar } from "lucide-react";
 import { useState } from "react";
 
@@ -156,7 +157,17 @@ const Events = () => {
                   <p className="text-sm font-medium text-gray-900">{event.organizer}</p>
                 </div>
 
-                <div className="flex gap-2">
+                {/* Timeline do Evento */}
+                {(event.status === "Em Andamento" || event.status === "Ativo") && (
+                  <EventTimeline 
+                    eventId={event.id}
+                    eventName={event.name}
+                    startDate={event.startDate}
+                    endDate={event.endDate}
+                  />
+                )}
+
+                <div className="flex gap-2 mt-4">
                   <Button variant="outline" size="sm" className="flex-1">
                     <Edit className="w-4 h-4 mr-2" />
                     Editar
