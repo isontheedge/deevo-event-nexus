@@ -1,4 +1,3 @@
-
 import { AdminLayout } from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +12,7 @@ const Venues = () => {
     {
       id: 1,
       name: "Casa do Rock",
+      logo: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=60&h=60&fit=crop",
       location: "São Paulo, SP - Rua Augusta, 123",
       rating: 4.5,
       eventsCount: 45,
@@ -24,6 +24,7 @@ const Venues = () => {
     {
       id: 2,
       name: "Jazz Club Rio",
+      logo: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=60&h=60&fit=crop",
       location: "Rio de Janeiro, RJ - Ipanema, 456",
       rating: 4.8,
       eventsCount: 32,
@@ -35,6 +36,7 @@ const Venues = () => {
     {
       id: 3,
       name: "Electronic Arena",
+      logo: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=60&h=60&fit=crop",
       location: "Florianópolis, SC - Centro, 789",
       rating: 4.3,
       eventsCount: 18,
@@ -46,6 +48,7 @@ const Venues = () => {
     {
       id: 4,
       name: "Acoustic Lounge",
+      logo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop",
       location: "Belo Horizonte, MG - Savassi, 321",
       rating: 4.7,
       eventsCount: 28,
@@ -100,11 +103,18 @@ const Venues = () => {
             <div key={venue.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{venue.name}</h3>
-                    <div className="flex items-center text-sm text-gray-600 mb-2">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {venue.location}
+                  <div className="flex items-center gap-3 flex-1">
+                    <img 
+                      src={venue.logo} 
+                      alt={`Logo ${venue.name}`}
+                      className="w-12 h-12 rounded-lg object-cover border border-gray-200"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{venue.name}</h3>
+                      <div className="flex items-center text-sm text-gray-600 mb-2">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        {venue.location}
+                      </div>
                     </div>
                   </div>
                   <Badge className={getStatusBadgeColor(venue.status)}>
