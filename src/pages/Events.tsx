@@ -20,7 +20,8 @@ const Events = () => {
       status: "Ativo",
       organizer: "João Silva",
       ticketsSold: 1250,
-      capacity: 2000
+      capacity: 2000,
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=200&fit=crop"
     },
     {
       id: 2,
@@ -32,7 +33,8 @@ const Events = () => {
       status: "Em Andamento",
       organizer: "Casa do Jazz",
       ticketsSold: 180,
-      capacity: 200
+      capacity: 200,
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=200&fit=crop"
     },
     {
       id: 3,
@@ -44,7 +46,8 @@ const Events = () => {
       status: "Planejado",
       organizer: "Maria Santos",
       ticketsSold: 45,
-      capacity: 150
+      capacity: 150,
+      image: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=400&h=200&fit=crop"
     },
     {
       id: 4,
@@ -56,7 +59,8 @@ const Events = () => {
       status: "Encerrado",
       organizer: "Pedro Oliveira",
       ticketsSold: 3500,
-      capacity: 3500
+      capacity: 3500,
+      image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=200&fit=crop"
     }
   ];
 
@@ -103,15 +107,23 @@ const Events = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {events.map((event) => (
             <div key={event.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{event.name}</h3>
-                    <p className="text-gray-600 text-sm mb-3">{event.description}</p>
-                  </div>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={event.image} 
+                  alt={event.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3">
                   <Badge className={getStatusBadgeColor(event.status)}>
                     {event.status}
                   </Badge>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{event.name}</h3>
+                  <p className="text-gray-600 text-sm mb-3">{event.description}</p>
                 </div>
 
                 <div className="space-y-2 mb-4">

@@ -19,7 +19,8 @@ const Artists = () => {
       minFee: "R$ 5.000",
       rating: 4.8,
       eventsCount: 15,
-      status: "Verificado"
+      status: "Verificado",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=200&fit=crop"
     },
     {
       id: 2,
@@ -30,7 +31,8 @@ const Artists = () => {
       minFee: "R$ 3.000",
       rating: 4.9,
       eventsCount: 8,
-      status: "Verificado"
+      status: "Verificado",
+      image: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=300&h=200&fit=crop"
     },
     {
       id: 3,
@@ -41,7 +43,8 @@ const Artists = () => {
       minFee: "R$ 8.000",
       rating: 4.6,
       eventsCount: 25,
-      status: "Pendente"
+      status: "Pendente",
+      image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=300&h=200&fit=crop"
     },
     {
       id: 4,
@@ -52,7 +55,8 @@ const Artists = () => {
       minFee: "R$ 2.500",
       rating: 4.7,
       eventsCount: 12,
-      status: "Verificado"
+      status: "Verificado",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=200&fit=crop"
     }
   ];
 
@@ -108,6 +112,19 @@ const Artists = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {artists.map((artist) => (
             <div key={artist.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={artist.image} 
+                  alt={artist.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3">
+                  <Badge className={getStatusBadgeColor(artist.status)}>
+                    {artist.status}
+                  </Badge>
+                </div>
+              </div>
+              
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex-1">
@@ -116,9 +133,6 @@ const Artists = () => {
                       {artist.genre}
                     </Badge>
                   </div>
-                  <Badge className={getStatusBadgeColor(artist.status)}>
-                    {artist.status}
-                  </Badge>
                 </div>
 
                 <div className="space-y-3 mb-4">

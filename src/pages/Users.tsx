@@ -1,8 +1,8 @@
-
 import { AdminLayout } from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Search, Plus, Filter, Edit, Trash2 } from "lucide-react";
 import { useState } from "react";
 
@@ -16,7 +16,8 @@ const Users = () => {
       email: "joao@email.com", 
       role: "Usuário comum", 
       status: "Ativo",
-      createdAt: "15 Mai 2024"
+      createdAt: "15 Mai 2024",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
     },
     { 
       id: 2, 
@@ -24,7 +25,8 @@ const Users = () => {
       email: "maria@email.com", 
       role: "Artista", 
       status: "Ativo",
-      createdAt: "10 Mai 2024"
+      createdAt: "10 Mai 2024",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face"
     },
     { 
       id: 3, 
@@ -32,7 +34,8 @@ const Users = () => {
       email: "contato@casadorock.com", 
       role: "Casa de show", 
       status: "Ativo",
-      createdAt: "08 Mai 2024"
+      createdAt: "08 Mai 2024",
+      avatar: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=40&h=40&fit=crop&crop=face"
     },
     { 
       id: 4, 
@@ -40,7 +43,8 @@ const Users = () => {
       email: "pedro@email.com", 
       role: "Organizador de evento", 
       status: "Pendente",
-      createdAt: "12 Mai 2024"
+      createdAt: "12 Mai 2024",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
     },
   ];
 
@@ -109,7 +113,13 @@ const Users = () => {
                 {users.map((user) => (
                   <tr key={user.id} className="hover:bg-gray-50">
                     <td className="p-4">
-                      <div className="font-medium text-gray-900">{user.name}</div>
+                      <div className="flex items-center gap-3">
+                        <Avatar className="w-10 h-10">
+                          <AvatarImage src={user.avatar} alt={user.name} />
+                          <AvatarFallback>{user.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                        </Avatar>
+                        <div className="font-medium text-gray-900">{user.name}</div>
+                      </div>
                     </td>
                     <td className="p-4 text-gray-600">{user.email}</td>
                     <td className="p-4">
